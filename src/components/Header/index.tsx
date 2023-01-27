@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import BoardContext from "../../assets/BoardContext";
+import { categories } from "../../assets/categories";
 
 export function Header() {
   const board = useContext(BoardContext);
+  const { size, setSize, category, sortedCards, setCategory, cards } =
+    useContext(BoardContext);
   return (
     <form action="submit">
       <div className="categoryInputs">
@@ -12,8 +15,8 @@ export function Header() {
             id="frogs"
             name="categories"
             value="frogs"
-            onChange={() => board?.setCategory("frogs")}
-            checked={board?.category === "frogs"}
+            onChange={() => setCategory("frogs")}
+            checked={category === "frogs"}
           />
           Frogs
         </label>
@@ -23,8 +26,8 @@ export function Header() {
             id="bugs"
             name="categories"
             value="bugs"
-            onChange={() => board?.setCategory("bugs")}
-            checked={board?.category === "bugs"}
+            onChange={() => setCategory("bugs")}
+            checked={category === "bugs"}
           />
           Bugs
         </label>
@@ -34,8 +37,8 @@ export function Header() {
             id="mushrooms"
             name="categories"
             value="mushrooms"
-            onChange={() => board?.setCategory("mushrooms")}
-            checked={board?.category === "mushrooms"}
+            onChange={() => setCategory("mushrooms")}
+            checked={category === "mushrooms"}
           />
           Mushrooms
         </label>
@@ -47,8 +50,8 @@ export function Header() {
             id="four"
             name="boardSize"
             value="four"
-            onChange={() => board?.setSize(4)}
-            checked={board?.size === 4}
+            onChange={() => setSize(4)}
+            checked={size === 4}
           />
           4
         </label>
@@ -58,8 +61,8 @@ export function Header() {
             id="eight"
             name="boardSize"
             value="eight"
-            onChange={() => board?.setSize(8)}
-            checked={board?.size === 8}
+            onChange={() => setSize(8)}
+            checked={size === 8}
           />
           8
         </label>
@@ -69,8 +72,8 @@ export function Header() {
             id="twelve"
             name="boardSize"
             value="twelve"
-            onChange={() => board?.setSize(12)}
-            checked={board?.size === 12}
+            onChange={() => setSize(12)}
+            checked={size === 12}
           />
           12
         </label>
@@ -80,12 +83,20 @@ export function Header() {
             id="sixteen"
             name="boardSize"
             value="sixteen"
-            onChange={() => board?.setSize(16)}
-            checked={board?.size === 16}
+            onChange={() => setSize(16)}
+            checked={size === 16}
           />
           16
         </label>
       </div>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          sortedCards(size, category);
+        }}
+      >
+        Test!
+      </button>
     </form>
   );
 }

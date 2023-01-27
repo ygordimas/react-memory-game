@@ -1,0 +1,50 @@
+.card {
+  width: 20vh;
+  height: 20vh;
+  overflow: hidden;
+}
+
+.cardContainer {
+  width: 100%;
+  height: 100%;
+
+  transition: all 1s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+.cardContainerFlip {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border: 1px solid pink;
+  backface-visibility: hidden;
+}
+
+.cardBack {
+  background: darkslategray;
+  transform: rotateY(180deg);
+}
+
+.cardImg {
+  max-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transition: all 1s;
+}
+
+.cardMatch {
+  opacity: 0.5;
+}

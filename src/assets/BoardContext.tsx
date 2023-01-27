@@ -1,12 +1,23 @@
 import { createContext, useState } from "react";
 import { categories } from "./categories";
+import { v4 as uuidv4 } from "uuid";
+
+type CardType = {
+  url: string;
+  id: string;
+};
 
 type BoardContextType = {
   category: string;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
   size: number;
   setSize: React.Dispatch<React.SetStateAction<number>>;
-  sortedCards: (amountOfCards: number, category: string) => string[];
+  sortedCards: (amountOfCards: number, category: string) => void;
+  cards: CardType[];
+  flippedCards: CardType[];
+  setFlippedCards: React.Dispatch<React.SetStateAction<CardType[]>>;
+  matchingCards: string[];
+  setMatchingCards: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 type BoardContextProviderProps = {
@@ -18,7 +29,10 @@ const BoardContext = createContext<BoardContextType>(null);
 export function BoardContextProvider({ children }: BoardContextProviderProps) {
   const [category, setCategory] = useState<string>("frogs");
   const [size, setSize] = useState<number>(4);
-
+  const [cards, setCards] = useState<CardType[]>([]);
+  const [flippedCards, setFlippedCards] = useState<CardType[]>([]);
+  const [matchingCards, setMatchingCards] = useState<string[]>([]);
+  console.log(flippedCards);
   const sortedArrayOfIndexes = (amountOfCards: number) => {
     const arr = [];
     for (let i = 0; i < 16; i++) {
@@ -31,10 +45,13 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
     ].sort(() => Math.random() - 0.5);
   };
 
-  const pickCardsFromCategory = (indexes: [], category: string) => {
+  const pickCardsFromCategory = (indexes: number[], category: string) => {
     const arrayOfCards = [];
     for (let i = 0; i < indexes.length; i++) {
-      arrayOfCards.push(category[indexes[i]]);
+      arrayOfCards.push({
+        url: categories[category][indexes[i]],
+        id: uuidv4(),
+      });
     }
     return arrayOfCards;
   };
@@ -42,13 +59,24 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
   const sortedCards = (amountOfCards: number, category: string) => {
     const indexes = sortedArrayOfIndexes(amountOfCards);
     const sortedCards = pickCardsFromCategory(indexes, category);
-
-    return sortedCards;
+    console.log(sortedCards);
+    setCards(sortedCards);
   };
 
   return (
     <BoardContext.Provider
-      value={{ category, setCategory, size, setSize, sortedCards }}
+      value={{
+        category,
+        setCategory,
+        size,
+        setSize,
+        sortedCards,
+        cards,
+        flippedCards,
+        setFlippedCards,
+        matchingCards,
+        setMatchingCards,
+      }}
     >
       {children}
     </BoardContext.Provider>

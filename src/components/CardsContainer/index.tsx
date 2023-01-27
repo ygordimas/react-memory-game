@@ -1,15 +1,20 @@
 import { Card } from "../Card";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import BoardContext from "../../assets/BoardContext";
 import { categories } from "../../assets/categories";
 
+import ContainerStyles from "./CardsContainer.module.css";
+
 export function CardsContainer() {
-  const { size, category, sortedCards } = useContext(BoardContext);
+  const { size, category, sortedCards, cards } = useContext(BoardContext);
 
   return (
     <>
-      <div>
-        <button>Test!</button>
+      <div className={ContainerStyles.cardsContainer}>
+        {cards &&
+          cards.map((card) => (
+            <Card key={card.id} url={card.url} id={card.id} />
+          ))}
       </div>
     </>
   );

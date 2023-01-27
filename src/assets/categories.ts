@@ -1,9 +1,13 @@
-export const categories = {
+type CategoriesType = {
+  [key: string]: string[];
+};
+
+export const categories: CategoriesType = {
   frogs: [
-    "/images/frogs/BirgerStrahl.jpg",
-    "/images/frogs/ChrisCurry.jpg",
+    "/images/frogs/IlonaFrey.jpg",
+    "/images/frogs/DavidClode3.jpg",
     "/images/frogs/CrystalMcClernon.jpg",
-    "/images/frogs/DavidClode.jpg",
+    "/images/frogs/DavidClode2.jpg",
     "/images/frogs/EmilyCao.jpg",
     "/images/frogs/KevinGedge.jpg",
     "/images/frogs/OleksandrKuzmin.jpg",
@@ -12,7 +16,7 @@ export const categories = {
     "/images/frogs/TaychinOlanwichitwong.jpg",
     "/images/frogs/TimothyDykes.jpg",
     "/images/frogs/TimothyDykes2.jpg",
-    "/images/frogs/TimoVolz.jpg",
+    "/images/frogs/CamilleBuisson.jpg",
     "/images/frogs/TommyBond.jpg",
     "/images/frogs/ZdenekMachacek.jpg",
     "/images/frogs/ZdenekMachacek2.jpg",
