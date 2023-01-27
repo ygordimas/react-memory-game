@@ -6,7 +6,8 @@ import { categories } from "../../assets/categories";
 import ContainerStyles from "./CardsContainer.module.css";
 
 export function CardsContainer() {
-  const { size, category, sortedCards, cards } = useContext(BoardContext);
+  const { size, category, sortedCards, cards, numberOfAttempts } =
+    useContext(BoardContext);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { categories } from "./categories";
 import { v4 as uuidv4 } from "uuid";
 
@@ -18,6 +18,8 @@ type BoardContextType = {
   setFlippedCards: React.Dispatch<React.SetStateAction<CardType[]>>;
   matchingCards: string[];
   setMatchingCards: React.Dispatch<React.SetStateAction<string[]>>;
+  numberOfAttempts: number;
+  setNumberOfAttempts: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type BoardContextProviderProps = {
@@ -32,7 +34,8 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
   const [cards, setCards] = useState<CardType[]>([]);
   const [flippedCards, setFlippedCards] = useState<CardType[]>([]);
   const [matchingCards, setMatchingCards] = useState<string[]>([]);
-  console.log(flippedCards);
+  const [numberOfAttempts, setNumberOfAttempts] = useState(0);
+
   const sortedArrayOfIndexes = (amountOfCards: number) => {
     const arr = [];
     for (let i = 0; i < 16; i++) {
@@ -76,6 +79,8 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
         setFlippedCards,
         matchingCards,
         setMatchingCards,
+        numberOfAttempts,
+        setNumberOfAttempts,
       }}
     >
       {children}

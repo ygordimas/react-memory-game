@@ -14,12 +14,16 @@ export function Card({ url, id }: CardType) {
     matchingCards,
     setMatchingCards,
     cards,
+    setNumberOfAttempts,
   } = useContext(BoardContext);
   const [isFlipped, setIsFlipped] = useState(false);
 
   function handleFlip(url: string, id: string) {
     let flipped: CardType[] = [...flippedCards, { url, id }];
     setFlippedCards([...flipped]);
+    if (!matchingCards.some((cardURL) => cardURL == url)) {
+      setNumberOfAttempts((attempts) => attempts + 1);
+    }
     if (flipped.length == 2 && flipped[0].url == flipped[1].url) {
       console.log("match");
 

@@ -4,15 +4,15 @@ import { useContext } from "react";
 import BoardContext from "./assets/BoardContext";
 import { Header } from "./components/Header";
 import { CardsContainer } from "./components/CardsContainer";
+import GameOver from "./components/GameOver";
 
 function App() {
-  const board = useContext(BoardContext);
-  console.log(board?.size, board?.category);
+  const { matchingCards, size } = useContext(BoardContext);
   return (
     <div className="App">
-      <span>{board?.category}</span>
       <Header />
       <CardsContainer />
+      <GameOver isOpen={matchingCards.length === size} />
     </div>
   );
 }
