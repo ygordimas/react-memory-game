@@ -19,13 +19,31 @@
   --secondary: #e7e6e1;
   --accent: #dddddd;
   --warning: #f2a154;
+  --text: #112435;
 }
 
 :root:has(#frogs:checked) {
-  --primary: #658864;
-  --secondary: #b7b78a;
+  --primary: #a0c59f;
+  --secondary: #d5e99e;
+  --accent: #fff567;
+  --warning: #ebab36;
+  --text: #494b2e;
+}
+
+:root:has(#bugs:checked) {
+  --primary: #cbffeb;
+  --secondary: #aaf3ba;
   --accent: #dddddd;
   --warning: #ebab36;
+  --text: #8bc1c9;
+}
+
+:root:has(#mountains:checked) {
+  --primary: #cbffeb;
+  --secondary: #aaf3ba;
+  --accent: #dddddd;
+  --warning: #ebab36;
+  --text: #8bc1c9;
 }
 
 :root,
@@ -34,6 +52,7 @@ body,
 #root {
   width: 100%;
   height: 100%;
+  color: var(--text);
 }
 
 a {

@@ -5,11 +5,12 @@ import BoardContext from "./assets/BoardContext";
 import { Header } from "./components/Header";
 import { CardsContainer } from "./components/CardsContainer";
 import GameOver from "./components/GameOver";
+import styles from "./App.module.css";
 
 function App() {
   const { matchingCards, size } = useContext(BoardContext);
   return (
-    <div className="App">
+    <div className={styles.app}>
       <Header />
       <CardsContainer />
       <GameOver isOpen={matchingCards.length === size} />

@@ -2,15 +2,24 @@
   width: 100%;
   margin: 0 auto;
   display: grid;
-  background-color: antiquewhite;
+  background-color: var(--secondary);
+  grid-template-columns: repeat(2, min-content);
 
   grid-gap: 4px;
   justify-content: center;
   align-content: center;
+  flex: 1;
+  padding-top: 1rem;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (min-width: 601px) {
   .cardsContainer {
-    grid-template-columns: repeat(2, min-content);
+    grid-template-columns: repeat(4, min-content);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cardsContainer {
+    grid-template-columns: repeat(8, min-content);
   }
 }

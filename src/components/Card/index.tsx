@@ -1,6 +1,12 @@
 import { useContext, useState } from "react";
 import BoardContext from "../../assets/BoardContext";
 import styles from "./Card.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMosquito,
+  faFrog,
+  faMountainSun,
+} from "@fortawesome/free-solid-svg-icons";
 
 type CardType = {
   url: string;
@@ -15,6 +21,7 @@ export function Card({ url, id }: CardType) {
     setMatchingCards,
     cards,
     setNumberOfAttempts,
+    category,
   } = useContext(BoardContext);
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -39,6 +46,16 @@ export function Card({ url, id }: CardType) {
     }
   }
 
+  function handleIcon(category: string) {
+    if (category == "frogs") {
+      return faFrog;
+    } else if (category == "bugs") {
+      return faMosquito;
+    } else {
+      return faMountainSun;
+    }
+  }
+
   return (
     <>
       <div className={styles.card} onClick={() => handleFlip(url, id)}>
@@ -52,7 +69,12 @@ export function Card({ url, id }: CardType) {
              styles.cardContainerFlip
            }`}
         >
-          <div className={styles.cardFront}>Back</div>
+          <div className={styles.cardFront}>
+            <FontAwesomeIcon
+              icon={handleIcon(category)}
+              className={styles.cardFrontIcon}
+            />
+          </div>
 
           <div className={styles.cardBack}>
             <img
