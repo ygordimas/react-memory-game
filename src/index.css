@@ -15,13 +15,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --primary: #314e52;
+  --secondary: #e7e6e1;
+  --accent: #dddddd;
+  --warning: #f2a154;
+}
 
-  --yellow: #ffe561;
+:root:has(#frogs:checked) {
+  --primary: #658864;
+  --secondary: #b7b78a;
+  --accent: #dddddd;
+  --warning: #ebab36;
 }
 
 :root,
 html,
-body {
+body,
+#root {
   width: 100%;
   height: 100%;
 }

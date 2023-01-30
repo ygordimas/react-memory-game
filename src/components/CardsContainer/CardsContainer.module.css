@@ -1,8 +1,16 @@
 .cardsContainer {
+  width: 100%;
   margin: 0 auto;
-  max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  background-color: antiquewhite;
+
   grid-gap: 4px;
   justify-content: center;
+  align-content: center;
+}
+
+@media screen and (max-width: 414px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, min-content);
+  }
 }

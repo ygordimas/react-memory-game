@@ -109,7 +109,7 @@ export function Header() {
             setMatchingCards([]);
           }}
         >
-          Play!
+          {cards.length === 0 ? "Play!" : "Restart"}
         </button>
       </form>
     </header>
