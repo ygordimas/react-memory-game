@@ -36,6 +36,16 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
   const [matchingCards, setMatchingCards] = useState<string[]>([]);
   const [numberOfAttempts, setNumberOfAttempts] = useState(0);
 
+  useEffect(() => {
+    if (category == "frogs") {
+      document.title = "Ribbit!";
+    } else if (category == "bugs") {
+      document.title = "Bzzzzz!";
+    } else {
+      document.title = "In places deep, where dark things sleep...";
+    }
+  }, [category]);
+
   const sortedArrayOfIndexes = (amountOfCards: number) => {
     const arr = [];
     for (let i = 0; i < 16; i++) {

@@ -30,7 +30,7 @@
 }
 
 .cardBack {
-  background: darkslategray;
+  background: var(--accent);
   transform: rotateY(180deg);
 }
 
@@ -46,7 +46,7 @@
 }
 
 .cardMatch {
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .cardFront {

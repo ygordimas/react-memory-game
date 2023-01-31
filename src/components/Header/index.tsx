@@ -212,8 +212,8 @@ export function Header() {
           </label> */}
         {/* </div> */}
         <button
-          className={`${styles.formButton} ${
-            cards.length > 0 && styles.formButtonActive
+          className={`${styles.playButton} ${
+            cards.length > 0 && styles.playButtonActive
           }`}
           onClick={(e) => {
             e.preventDefault();
