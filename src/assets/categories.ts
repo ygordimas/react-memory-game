@@ -39,4 +39,18 @@ export const categories: CategoriesType = {
     "images/bugs/YuichiKageyama.jpg",
     "images/bugs/YuichiKageyama2.jpg",
   ],
+  mountains: [
+    "/images/mountains/AronVisuals.jpg",
+    "/images/mountains/AsaSteinarsdottir.jpg",
+    "/images/mountains/BenjaminVoros.jpg",
+    "/images/mountains/DanielaIzotenko.jpg",
+    "/images/mountains/GabrielRissi.jpg",
+    "/images/mountains/JerryZhang.jpg",
+    "/images/mountains/JohnPeters.jpg",
+    "/images/mountains/JonathanBell.jpg",
+    "/images/mountains/KurtCotoaga.jpg",
+    "/images/mountains/LeioMcLaren.jpg",
+    "/images/mountains/MamunSrizon.jpg",
+    "/images/mountains/SimonBerger.jpg",
+  ],
 };

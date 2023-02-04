@@ -20,6 +20,8 @@ type BoardContextType = {
   setMatchingCards: React.Dispatch<React.SetStateAction<string[]>>;
   numberOfAttempts: number;
   setNumberOfAttempts: React.Dispatch<React.SetStateAction<number>>;
+  activeCard: CardType | null;
+  setActiveCard: React.Dispatch<React.SetStateAction<CardType | null>>;
 };
 
 type BoardContextProviderProps = {
@@ -35,6 +37,7 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
   const [flippedCards, setFlippedCards] = useState<CardType[]>([]);
   const [matchingCards, setMatchingCards] = useState<string[]>([]);
   const [numberOfAttempts, setNumberOfAttempts] = useState(0);
+  const [activeCard, setActiveCard] = useState<CardType | null>(null);
 
   useEffect(() => {
     if (category == "frogs") {
@@ -48,7 +51,7 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
 
   const sortedArrayOfIndexes = (amountOfCards: number) => {
     const arr = [];
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < 12; i++) {
       arr[i] = i;
     }
     const sortedArray = arr.sort(() => Math.random() - 0.5);
@@ -91,6 +94,8 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
         setMatchingCards,
         numberOfAttempts,
         setNumberOfAttempts,
+        activeCard,
+        setActiveCard,
       }}
     >
       {children}

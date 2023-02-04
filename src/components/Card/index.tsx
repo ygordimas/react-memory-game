@@ -22,31 +22,36 @@ export function Card({ url, id }: CardType) {
     cards,
     setNumberOfAttempts,
     category,
+    activeCard,
+    setActiveCard,
   } = useContext(BoardContext);
   const [isFlipped, setIsFlipped] = useState(false);
 
   function handleFlip(url: string, id: string) {
+    //prevents flipped card from being handled again
+    if (activeCard && activeCard.id == id) {
+      return;
+    }
+
+    setActiveCard({ url, id });
     let flipped: CardType[] = [...flippedCards, { url, id }];
     setFlippedCards([...flipped]);
-    if (!matchingCards.some((cardURL) => cardURL == url)) {
-      setNumberOfAttempts((attempts) => attempts + 1);
-    }
+
     if (flipped.length == 2 && flipped[0].url == flipped[1].url) {
       console.log("match");
-
       setTimeout(() => {
         setMatchingCards([...matchingCards, url]);
         setFlippedCards([]);
       }, 1000);
     } else if (flipped.length == 2 && flipped[0].url != flipped[1].url) {
-      console.log("no mtach");
+      setNumberOfAttempts((attempts) => attempts + 1);
       setTimeout(() => {
         setFlippedCards([]);
       }, 1000);
     }
   }
 
-  function handleIcon(category: string) {
+  function displayIcon(category: string) {
     if (category == "frogs") {
       return faFrog;
     } else if (category == "bugs") {
@@ -71,7 +76,7 @@ export function Card({ url, id }: CardType) {
         >
           <div className={styles.cardFront}>
             <FontAwesomeIcon
-              icon={handleIcon(category)}
+              icon={displayIcon(category)}
               className={styles.cardFrontIcon}
             />
           </div>
