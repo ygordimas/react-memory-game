@@ -31,8 +31,8 @@ export function CardsContainer() {
       flippedCards[0].url == flippedCards[1].url
     ) {
       setMatchingCards([...matchingCards, flippedCards[0].url]);
-      setFlippedCards([]);
       setTimeout(() => {
+        setFlippedCards([]);
         setActiveCard(null);
       }, 1000);
     } else if (
@@ -50,7 +50,11 @@ export function CardsContainer() {
   console.log(flippedCards);
   return (
     <>
-      <div className={styles.cardsContainer}>
+      <div
+        className={`${styles.cardsContainer} ${size == 4 && styles.smallGrid} ${
+          size == 8 && styles.mediumGrid
+        } ${size == 12 && styles.largeGrid}`}
+      >
         {cards &&
           cards.map((card) => (
             <Card key={card.id} url={card.url} id={card.id} />

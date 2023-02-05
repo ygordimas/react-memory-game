@@ -2,7 +2,7 @@
   width: 100%;
   margin: 0 auto;
   display: grid;
-  background-color: var(--secondary);
+
   grid-template-columns: repeat(2, min-content);
 
   grid-gap: 4px;
@@ -13,13 +13,24 @@
 }
 
 @media screen and (min-width: 601px) {
-  .cardsContainer {
+  .smallGrid {
+    grid-template-columns: repeat(4, min-content);
+  }
+
+  .mediumGrid {
+    grid-template-columns: repeat(4, min-content);
+  }
+
+  .largeGrid {
     grid-template-columns: repeat(4, min-content);
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .cardsContainer {
+  .mediumGrid {
+    grid-template-columns: repeat(4, min-content);
+  }
+  .largeGrid {
     grid-template-columns: repeat(8, min-content);
   }
 }

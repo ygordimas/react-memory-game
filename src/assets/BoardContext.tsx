@@ -14,6 +14,7 @@ type BoardContextType = {
   setSize: React.Dispatch<React.SetStateAction<number>>;
   sortedCards: (amountOfCards: number, category: string) => void;
   cards: CardType[];
+  setCards: React.Dispatch<React.SetStateAction<CardType[]>>;
   flippedCards: CardType[];
   setFlippedCards: React.Dispatch<React.SetStateAction<CardType[]>>;
   matchingCards: string[];
@@ -22,6 +23,8 @@ type BoardContextType = {
   setNumberOfAttempts: React.Dispatch<React.SetStateAction<number>>;
   activeCard: CardType | null;
   setActiveCard: React.Dispatch<React.SetStateAction<CardType | null>>;
+  isPlaying: boolean;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 type BoardContextProviderProps = {
@@ -31,13 +34,14 @@ type BoardContextProviderProps = {
 const BoardContext = createContext<BoardContextType>(null);
 
 export function BoardContextProvider({ children }: BoardContextProviderProps) {
-  const [category, setCategory] = useState<string>("frogs");
-  const [size, setSize] = useState<number>(4);
+  const [category, setCategory] = useState<string>("");
+  const [size, setSize] = useState<number>(0);
   const [cards, setCards] = useState<CardType[]>([]);
   const [flippedCards, setFlippedCards] = useState<CardType[]>([]);
   const [matchingCards, setMatchingCards] = useState<string[]>([]);
   const [numberOfAttempts, setNumberOfAttempts] = useState(0);
   const [activeCard, setActiveCard] = useState<CardType | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (category == "frogs") {
@@ -88,6 +92,7 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
         setSize,
         sortedCards,
         cards,
+        setCards,
         flippedCards,
         setFlippedCards,
         matchingCards,
@@ -96,6 +101,8 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
         setNumberOfAttempts,
         activeCard,
         setActiveCard,
+        isPlaying,
+        setIsPlaying,
       }}
     >
       {children}

@@ -14,7 +14,7 @@ function App() {
     <div className={styles.app}>
       <Header />
       <CardsContainer />
-      <GameOver isOpen={matchingCards.length == size} />
+      <GameOver />
     </div>
   );
 }

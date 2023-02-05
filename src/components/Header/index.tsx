@@ -10,11 +10,15 @@ export function Header() {
     sortedCards,
     setCategory,
     cards,
+    setCards,
     setMatchingCards,
+    isPlaying,
+    setIsPlaying,
+    setFlippedCards,
   } = useContext(BoardContext);
   return (
     <header className={styles.header}>
-      <div className={styles.title}>Memory Game</div>
+      {/* <div className={styles.title}>Memory Game</div> */}
       <form action="submit" className={styles.form}>
         <div className={styles.pickers}>
           <div className={styles.picker}>
@@ -101,16 +105,30 @@ export function Header() {
           </div>
         </div>
 
-        <button
-          className={`${cards.length > 0 && styles.playButtonActive}`}
-          onClick={(e) => {
-            e.preventDefault();
-            sortedCards(size, category);
-            setMatchingCards([]);
-          }}
-        >
-          {cards.length === 0 ? "Play!" : "Restart"}
-        </button>
+        <div className={styles.buttons}>
+          <button
+            className={`${!isPlaying && styles.buttonIsActive}`}
+            onClick={(e) => {
+              e.preventDefault();
+              sortedCards(size, category);
+              setMatchingCards([]);
+              setIsPlaying(true);
+            }}
+          >
+            Play
+          </button>
+          <button
+            className={`${isPlaying && styles.buttonIsActive}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setCards([]);
+              setFlippedCards([]);
+              setMatchingCards([]);
+            }}
+          >
+            Restart
+          </button>
+        </div>
       </form>
     </header>
   );

@@ -2,21 +2,23 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--secondary);
+
   align-items: center;
 }
 
-.title {
+/* .title {
   width: 100%;
-  background-color: var(--accent);
+  background-color: var(--gray-200);
   border-bottom: 1px solid var(--primary);
-  color: var(--text);
+  color: var(--accent);
   text-align: center;
   line-height: 2rem;
   font-size: 2rem;
   font-weight: 600;
   padding-block: 1rem;
-}
+  font-family: "Fredoka One", cursive;
+  text-transform: lowercase;
+} */
 
 .form {
   display: flex;
@@ -166,6 +168,11 @@
   border: 3px solid var(--secondary);
 } */
 
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
 button {
   color: var(--text);
   grid-column: 1 / -1;
@@ -175,7 +182,7 @@ button {
   box-sizing: border-box;
   font-family: "Fredoka One", cursive;
   text-align: center;
-  letter-spacing: 0.08rem;
+  letter-spacing: 0.02rem;
   font-size: 1.1rem;
 
   padding: 1rem;
@@ -189,7 +196,7 @@ button:hover {
   background-color: var(--accent);
 }
 
-.playButtonActive {
+.buttonIsActive {
   color: var(--text);
   background-color: var(--secondary);
   border: 3px solid var(--accent);
