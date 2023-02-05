@@ -42,7 +42,8 @@ export function Card({ url, id }: CardType) {
     if (
       (activeCard && activeCard.id == id) ||
       matchingCards.some((card) => card == url) ||
-      flippedCards.some((card) => card.id == id)
+      flippedCards.some((card) => card.id == id) ||
+      flippedCards.length == 2
     ) {
       return;
     }
