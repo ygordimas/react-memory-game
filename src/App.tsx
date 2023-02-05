@@ -9,11 +9,12 @@ import styles from "./App.module.css";
 
 function App() {
   const { matchingCards, size } = useContext(BoardContext);
+
   return (
     <div className={styles.app}>
       <Header />
       <CardsContainer />
-      <GameOver isOpen={matchingCards.length === size} />
+      <GameOver isOpen={matchingCards.length == size} />
     </div>
   );
 }

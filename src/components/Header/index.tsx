@@ -102,9 +102,7 @@ export function Header() {
         </div>
 
         <button
-          className={`${styles.playButton} ${
-            cards.length > 0 && styles.playButtonActive
-          }`}
+          className={`${cards.length > 0 && styles.playButtonActive}`}
           onClick={(e) => {
             e.preventDefault();
             sortedCards(size, category);

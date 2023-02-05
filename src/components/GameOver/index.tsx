@@ -24,8 +24,7 @@ export function GameOver({ isOpen }: GameOverType) {
       className={styles.modal}
     >
       <div>
-        GGs! You finished the game after {Math.floor(numberOfAttempts / 2)}{" "}
-        attempts
+        GGs! You finished the game with {numberOfAttempts} failed attempts.
       </div>
       <button onClick={handleRestart}>Restart</button>
     </ReactModal>

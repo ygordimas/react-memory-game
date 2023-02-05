@@ -40,3 +40,7 @@
   cursor: pointer;
   color: var(--text);
 }
+
+.modal button:hover {
+  background-color: var(--accent);
+}

@@ -166,19 +166,27 @@
   border: 3px solid var(--secondary);
 } */
 
-.playButton {
+button {
   color: var(--text);
   grid-column: 1 / -1;
 
   background-color: var(--primary);
   border: 3px solid transparent;
   box-sizing: border-box;
-  font-weight: 600;
+  font-family: "Fredoka One", cursive;
   text-align: center;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.08rem;
+  font-size: 1.1rem;
+
   padding: 1rem;
   cursor: pointer;
-  border-radius: 0.6rem;
+  border-radius: 2rem;
+
+  transition: background-color 0.08s ease-in;
+}
+
+button:hover {
+  background-color: var(--accent);
 }
 
 .playButtonActive {

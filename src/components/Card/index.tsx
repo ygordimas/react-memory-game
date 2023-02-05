@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BoardContext from "../../assets/BoardContext";
 import styles from "./Card.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,37 +18,37 @@ export function Card({ url, id }: CardType) {
     flippedCards,
     setFlippedCards,
     matchingCards,
-    setMatchingCards,
-    cards,
-    setNumberOfAttempts,
     category,
     activeCard,
     setActiveCard,
   } = useContext(BoardContext);
-  const [isFlipped, setIsFlipped] = useState(false);
 
-  function handleFlip(url: string, id: string) {
+  const [displayedFlipped, setDisplayedFlipped] = useState<CardType[]>([]);
+
+  //clicking on a card sets it to be displayed
+  useEffect(() => {
+    if (activeCard) {
+      setDisplayedFlipped([...displayedFlipped, { ...activeCard }]);
+    }
+    if (flippedCards.length == 2 && flippedCards[0].id != flippedCards[1].url) {
+      setTimeout(() => {
+        setDisplayedFlipped([]);
+      }, 1000);
+    }
+  }, [activeCard]);
+
+  function handleClick(url: string, id: string) {
     //prevents flipped card from being handled again
-    if (activeCard && activeCard.id == id) {
+    if (
+      (activeCard && activeCard.id == id) ||
+      matchingCards.some((card) => card == url) ||
+      flippedCards.some((card) => card.id == id)
+    ) {
       return;
     }
 
     setActiveCard({ url, id });
-    let flipped: CardType[] = [...flippedCards, { url, id }];
-    setFlippedCards([...flipped]);
-
-    if (flipped.length == 2 && flipped[0].url == flipped[1].url) {
-      console.log("match");
-      setTimeout(() => {
-        setMatchingCards([...matchingCards, url]);
-        setFlippedCards([]);
-      }, 1000);
-    } else if (flipped.length == 2 && flipped[0].url != flipped[1].url) {
-      setNumberOfAttempts((attempts) => attempts + 1);
-      setTimeout(() => {
-        setFlippedCards([]);
-      }, 1000);
-    }
+    setFlippedCards([...flippedCards, { url, id }]);
   }
 
   function displayIcon(category: string) {
@@ -63,16 +63,16 @@ export function Card({ url, id }: CardType) {
 
   return (
     <>
-      <div className={styles.card} onClick={() => handleFlip(url, id)}>
+      <div className={styles.card} onClick={() => handleClick(url, id)}>
         <div
           className={`${styles.cardContainer} ${
             matchingCards.some((card) => card == url) &&
             styles.cardContainerFlip
+          } ${
+            displayedFlipped.some((card) => card.id == id) &&
+            styles.cardContainerFlip
           }
-           ${
-             flippedCards.some((card) => card.id == id) &&
-             styles.cardContainerFlip
-           }`}
+           `}
         >
           <div className={styles.cardFront}>
             <FontAwesomeIcon

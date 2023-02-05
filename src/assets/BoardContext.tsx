@@ -75,7 +75,7 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
   const sortedCards = (amountOfCards: number, category: string) => {
     const indexes = sortedArrayOfIndexes(amountOfCards);
     const sortedCards = pickCardsFromCategory(indexes, category);
-    console.log(sortedCards);
+    // console.log(sortedCards);
     setCards(sortedCards);
   };
 
