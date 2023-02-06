@@ -23,35 +23,32 @@
   --gray-400: #404040;
   --gray-500: #262626;
 
-  --primary: #314e52;
-  --secondary: #e7e6e1;
-  --accent: #dddddd;
-  --warning: #f2a154;
+  --primary: #36929e;
+  --secondary: #47afb3;
+  --accent: #84c4ae;
   --text: #112435;
+  --warning: #ee6b00;
 }
 
 :root:has(#frogs:checked) {
-  --primary: #a0c59f;
-  --secondary: #d5e99e;
-  --accent: #fff567;
-  --warning: #ebab36;
+  --primary: #61ee79;
+  --secondary: #bdff09;
+  --accent: #11d141;
   --text: #494b2e;
 }
 
 :root:has(#bugs:checked) {
-  --primary: #86acaa;
-  --secondary: #b7f1ba;
-  --accent: #7dcf5c;
-  --warning: #ebab36;
-  --text: #3d5558;
+  --primary: #cf9d14;
+  --secondary: #55ffe8;
+  --accent: #dbb6fa;
+  --text: #0a464e;
 }
 
 :root:has(#mountains:checked) {
-  --primary: #d0cbd8;
-  --secondary: #bec7c7;
-  --accent: #dddddd;
-  --warning: #ebab36;
-  --text: #678286;
+  --primary: #b2a2cc;
+  --secondary: #d1cbec;
+  --accent: #b4b8ff;
+  --text: #47686d;
 }
 
 :root,
@@ -64,7 +61,7 @@ body,
 }
 
 body {
-  background-color: var(--gray-300);
+  background-color: var(--gray-100);
 }
 body a {
   font-weight: 500;

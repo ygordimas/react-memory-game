@@ -3,6 +3,9 @@ import BoardContext from "../../assets/BoardContext";
 import ReactModal from "react-modal";
 import styles from "./GameOver.module.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGrinStars } from "@fortawesome/free-solid-svg-icons";
+
 type GameOverType = {
   isOpen: boolean;
 };
@@ -16,36 +19,36 @@ export function GameOver() {
     size,
     sortedCards,
     category,
+    isPlaying,
+    setIsPlaying,
   } = useContext(BoardContext);
 
-  const [isOpen, setIsOpen] = useState(false);
-  useEffect(() => {
-    if (size > 0 && matchingCards.length == size) {
-      setTimeout(() => {
-        setIsOpen(!isOpen);
-      }, 1500);
-    }
-  }, [matchingCards]);
-
-  const handleRestart = () => {
-    setNumberOfAttempts(0);
-    setMatchingCards([]);
-    sortedCards(size, category);
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <ReactModal
-      isOpen={isOpen}
-      onRequestClose={() => handleRestart()}
-      overlayClassName={styles.overlay}
-      className={styles.modal}
-    >
-      <div>
-        GGs! You finished the game with {numberOfAttempts} failed attempts.
+    // <ReactModal
+    //   isOpen={isOpen}
+    //   onRequestClose={() => handleRestart()}
+    //   overlayClassName={styles.overlay}
+    //   className={styles.modal}
+    // >
+    //   <div>
+    //     GGs! You finished the game with {numberOfAttempts} failed attempts.
+    //   </div>
+    //   <button onClick={handleRestart}>Restart</button>
+    // </ReactModal>
+    <>
+      <div
+        className={`${styles.container} ${
+          !isPlaying && matchingCards.length > 0 && styles.show
+        }`}
+      >
+        <FontAwesomeIcon icon={faGrinStars} className={styles.icon} />
+        <span>
+          <span className={styles.gg}>GGs</span>! You finished the game after{" "}
+          <span>{numberOfAttempts}</span> failed{" "}
+          {numberOfAttempts == 1 ? `attempt` : `attempts`}.
+        </span>
       </div>
-      <button onClick={handleRestart}>Restart</button>
-    </ReactModal>
+    </>
   );
 }
 

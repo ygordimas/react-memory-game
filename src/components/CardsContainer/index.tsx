@@ -4,6 +4,7 @@ import BoardContext from "../../assets/BoardContext";
 import { categories } from "../../assets/categories";
 
 import styles from "./CardsContainer.module.css";
+import GameOver from "../GameOver";
 
 type CardType = {
   url: string;
@@ -23,6 +24,8 @@ export function CardsContainer() {
     setMatchingCards,
     setNumberOfAttempts,
     numberOfAttempts,
+    isPlaying,
+    setIsPlaying,
   } = useContext(BoardContext);
 
   useEffect(() => {
@@ -48,6 +51,14 @@ export function CardsContainer() {
     }
   }, [flippedCards]);
   console.log(flippedCards);
+
+  useEffect(() => {
+    if (size > 0 && matchingCards.length == size) {
+      setTimeout(() => {
+        setIsPlaying(false);
+      }, 1500);
+    }
+  }, [matchingCards]);
   return (
     <>
       <div
@@ -55,7 +66,10 @@ export function CardsContainer() {
           size == 8 && styles.mediumGrid
         } ${size == 12 && styles.largeGrid}`}
       >
-        {cards &&
+        {!isPlaying && <GameOver />}
+
+        {isPlaying &&
+          cards &&
           cards.map((card) => (
             <Card key={card.id} url={card.url} id={card.id} />
           ))}

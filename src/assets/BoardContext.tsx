@@ -43,16 +43,6 @@ export function BoardContextProvider({ children }: BoardContextProviderProps) {
   const [activeCard, setActiveCard] = useState<CardType | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    if (category == "frogs") {
-      document.title = "Ribbit!";
-    } else if (category == "bugs") {
-      document.title = "Bzzzzz!";
-    } else {
-      document.title = "In places deep, where dark things sleep...";
-    }
-  }, [category]);
-
   const sortedArrayOfIndexes = (amountOfCards: number) => {
     const arr = [];
     for (let i = 0; i < 12; i++) {
